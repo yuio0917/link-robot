@@ -1,32 +1,17 @@
-#include <Arduino.h>
-#include "config.h"
+#include "LinkRobot.hpp"
+
+LinkRobot robot;
 
 void setup() {
-    Serial.begin();
-    Serial.println("Starting...");
-
-    initServos();
-
-    Serial.println("Moving to Home Position...");
-    penUp();
-    Homeposition();
-
-    delay(3000);
+  Serial.begin(9600);
+  robot.begin();
+  robot.setSpeed(30);
+  
+  robot.penUp();
+  robot.moveTo(30, 150);
 }
 
 void loop() {
-    Serial.println("Drawing 'A,B'");
-    drawChar('A');
-    delay(1000);
-
-    drawChar('B');
-    delay(1000);
-
-    Serial.println("Finished.");
-    penUp();
-    goHome();
-
-    while (true) {
-        delay(100);
-    }
+  robot.drawString("AB");
+  delay(100);
 }
