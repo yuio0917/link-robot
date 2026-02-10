@@ -5,6 +5,7 @@
 #include <Servo.h>
 #include <numbers>
 #include <iostream>
+#include <cmath>
 
 class LinkRobot {
     private:
@@ -26,7 +27,27 @@ class LinkRobot {
         static const float start_pos_x = 40; //描画する初期位置のx座標
         static const float start_pos_y = 120; //描画する初期位置のy座標
 
-        std::vector<std::vector<float>> charVec;
+        std::vector<std::vector<double>> charVec; //描画する文字のx, y座標情報を格納
+        std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
+
+        float   dist_joint1_to_pen; //joint1からペン先までの距離
+        float   dist_joint2_to_pen; //joint2からペン先までの距離
+
+        //各リンクの長さやjoinの座標
+        double  joint1_x = 0;
+        double  joint1_y = 0;
+        double  joint2_x = 60;
+        double  joint2_y = 0;
+        
+        static const int    l1 = 60;
+        static const int    l2 = 60;
+        static const int    l3 = 60;
+        static const int    l4 = 60;
+        static const int    l5 = 60;
+        static const int    l6 = 50;
+
+        double   theta_1; //motor1の回転角度
+        double   theta_2; //motor2の回転角度
 
         Servo servoL, servoR, servoZ;
         int _pinL, _pinR, _pinZ;
@@ -34,7 +55,7 @@ class LinkRobot {
         float _l_virt, _phi; 
         int _delay;
         float _current_x, _current_y;
-        void solveIK(float x, float y, float &degL, float &degR);
+        void solveIK(std::vector<std::vector<float>> &charvec);
 
     public:
         LinkRobot();

@@ -35,13 +35,10 @@ void    LinkRobot::getAPos(std::vector<std::vector<float>> &charVec){
     
     //初期位置からPosition2までの線形補完
     LinearInterpolation(start_pos_x, start_pos_y, pos2_x, pos2_y, charVec);
-
     //Position2からPosition3までの線形補完
     LinearInterpolation(pos2_x, pos2_y, pos3_x, pos3_y, charVec);
-
     //Position3からPosition4までの線形補完
     LinearInterpolation(pos3_x, pos3_y, pos4_x, pos4_y, charVec);
-
     //Position4からPosition5までの線形補完
     LinearInterpolation(pos4_x, pos4_y, pos5_x, pos5_y, charVec);
 }
