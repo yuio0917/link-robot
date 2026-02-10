@@ -49,7 +49,7 @@ class LinkRobot {
         double   theta_1; //motor1の回転角度
         double   theta_2; //motor2の回転角度
 
-        Servo servoL, servoR, servoZ;
+        Servo servoL, servoR, servoPen;
         int _pinL, _pinR, _pinZ;
         float _d, _l1, _l2, _ext_x, _ext_y;
         float _l_virt, _phi; 

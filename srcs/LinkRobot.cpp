@@ -19,23 +19,24 @@ void LinkRobot::setSpeed(int delayMs) {
 }
 
 void LinkRobot::penUp() {
-    servoZ.write(90); delay(100);
+    servoPen.write(90); delay(100);
 }
 
 void LinkRobot::penDown() {
-    servoZ.write(0); delay(100);
+    servoPen.write(0); delay(100);
 }
 
 //制御
 void LinkRobot::moveTo(float x, float y) {
-    solveIK(x, y);
-    if (isnan(degL) || isnan(degR)) return;
-    servoL.write((int)degL);
-    servoR.write(180 - (int)degR);
-    delay(_delay);
-    
-    _current_x = x;
-    _current_y = y;
+
+}
+
+void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec) {
+    for (int i = 0; i < angleVec[0].size(); i++){
+        servoL.write((int)angleVec[0][i]);
+        servoR.write((int)angleVec[1][i]);
+        delay(100);
+    }
 }
 
 //文字書き部分
