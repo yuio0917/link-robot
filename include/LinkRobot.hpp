@@ -61,8 +61,6 @@ class LinkRobot {
         LinkRobot();
         ~LinkRobot();
 
-        FiveBarRobot(int pinL, int pinR, int pinZ);
-
         void begin();               // 初期化
         void setSpeed(int delayMs); // スピード調整
         void home();                // ホームへ戻る
