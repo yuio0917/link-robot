@@ -1,6 +1,6 @@
 TARGET = LinkRobot
 
-SRCS = main.ino \
+SRCS = main.cpp \
 		srcs/InverseKinematics.cpp \
 		srcs/LinkRobot.cpp \
 		srcs/TextCoords.cpp \
@@ -9,7 +9,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors #c++98となってますが，最新のコンパイラに変更しといてください．
+CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -pedantic-errors -I include
 
 all: $(TARGET)
 
@@ -27,4 +27,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONEY: all fclean clean re
+.PHONY: all fclean clean re

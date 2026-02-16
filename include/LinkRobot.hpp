@@ -3,72 +3,76 @@
 
 #include <Arduino.h>
 #include <Servo.h>
-#include <numbers>
-#include <iostream>
+#include <vector>
+#include <string>
 #include <cmath>
+#include <iostream>
+
+struct Stroke {
+    std::vector<std::vector<float>> points; // [[x,y], [x,y], ...]
+    bool penDown;
+};
 
 class LinkRobot {
-    private:
-        //LinkRobotクラスのメンバ関数のアドレスを扱う関数ポインタの宣言
-        typedef void (LinkRobot::*HandlePtr)();
-        HandlePtr CharHandle[7];
+private:
+    // 文字座標取得用メンバ関数ポインタ
+    typedef void (LinkRobot::*HandlePtr)(std::vector<Stroke>&);
+    HandlePtr CharHandle[7];
 
-        void    getAPos();
-        void    getBPos();
-        void    getCPos();
-        void    getDPos();
-        void    getEPos();
-        void    getCirclePos();
-        void    getCrossPos();
-        void    TextCoords(char c);
+    void getAPos(std::vector<Stroke>& strokes);
+    void getBPos(std::vector<Stroke>& strokes);
+    void getCPos(std::vector<Stroke>& strokes);
+    void getDPos(std::vector<Stroke>& strokes);
+    void getEPos(std::vector<Stroke>& strokes);
+    void getCirclePos(std::vector<Stroke>& strokes);
+    void getCrossPos(std::vector<Stroke>& strokes);
+    void TextCoords(const std::string& c, std::vector<Stroke>& strokes);
 
-        static const int N = 20; //分割数
-        static const int squareSize = 20; //描画する文字範囲
-        static const float start_pos_x = 40; //描画する初期位置のx座標
-        static const float start_pos_y = 120; //描画する初期位置のy座標
+    // 分割数・描画サイズ
+    static constexpr int N = 20;
+    static constexpr float squareSize = 20.0f;
+    static constexpr float charSpacing = 10.0f;
 
-        std::vector<std::vector<double>> charVec; //描画する文字のx, y座標情報を格納
-        std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
+    // ロボット物理パラメータ (MATLABシミュレーションと一致)
+    static constexpr float d  = 60.0f;  // モータ間距離
+    static constexpr float l1 = 80.0f;  // モータ側リンク長
+    static constexpr float l2 = 100.0f; // ペン側リンク長
 
-        float   dist_joint1_to_pen; //joint1からペン先までの距離
-        float   dist_joint2_to_pen; //joint2からペン先までの距離
+    // サーボ可動範囲 (度)
+    static constexpr float servoMin = 10.0f;
+    static constexpr float servoMax = 170.0f;
 
-        //各リンクの長さやjoinの座標
-        double  joint1_x = 0;
-        double  joint1_y = 0;
-        double  joint2_x = 60;
-        double  joint2_y = 0;
-        
-        static const int    l1 = 60;
-        static const int    l2 = 60;
-        static const int    l3 = 60;
-        static const int    l4 = 60;
-        static const int    l5 = 60;
-        static const int    l6 = 50;
+    // 描画初期位置
+    float startPosX = 30.0f; // d/2 = 左右中央
+    float startPosY = 120.0f;
 
-        double   theta_1; //motor1の回転角度
-        double   theta_2; //motor2の回転角度
+    // サーボ・ピン
+    Servo servoL, servoR, servoPen;
+    int _pinL = 9, _pinR = 10, _pinZ = 11;
 
-        Servo servoL, servoR, servoPen;
-        int _pinL, _pinR, _pinZ;
-        float _d, _l1, _l2, _ext_x, _ext_y;
-        float _l_virt, _phi; 
-        int _delay;
-        float _current_x, _current_y;
-        void solveIK(std::vector<std::vector<float>> &charvec);
+    int _delay = 30;
+    float _currentX = 30.0f;
+    float _currentY = 120.0f;
 
-    public:
-        LinkRobot();
-        ~LinkRobot();
+    // IK: 単点
+    bool solveIKPoint(float x, float y, float& thetaL, float& thetaR);
+    // IK: バッチ (point-array → angle-array)
+    std::vector<std::vector<float>> solveIK(const std::vector<std::vector<float>>& points);
 
-        void begin();               // 初期化
-        void setSpeed(int delayMs); // スピード調整
-        void home();                // ホームへ戻る
-        void penUp();               // ペン上げ
-        void penDown();             // ペン下げ
-        void moveTo(float x, float y); // 指定座標へ移動
-        void drawChar(char c);      // 1文字書く
-        void drawString(); // 文字列を書く
+    void moveMotor(const std::vector<std::vector<float>>& angles);
+
+public:
+    LinkRobot();
+    ~LinkRobot();
+
+    void begin();
+    void setSpeed(int delayMs);
+    void home();
+    void penUp();
+    void penDown();
+    void moveTo(float x, float y);
+    void drawChar(const std::string& c);
+    void drawString(const std::string& str);
 };
 
 #endif
