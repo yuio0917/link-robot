@@ -18,20 +18,20 @@ void    LinearInterpolation(float start_x, float start_y, float end_x, float end
 
 void    LinkRobot::getAPos(std::vector<std::vector<float>> &charVec){
     //Position2の座標
-    pos2_x = start_pos_x + squareSize / 2;
-    pos2_y = start_pos_y + squareSize;
+    double pos2_x = start_pos_x + squareSize / 2;
+    double pos2_y = start_pos_y + squareSize;
 
     //Position3の座標
-    pos3_x = start_pos_x + squareSize;
-    pos3_y = start_pos_y;
+    double pos3_x = start_pos_x + squareSize;
+    double pos3_y = start_pos_y;
 
     //Position4の座標
-    pos4_x = (start_pos_x + pos2_x) / 2;
-    pos4_y = (start_pos_y + pos2_y) / 2;
+    double pos4_x = (start_pos_x + pos2_x) / 2;
+    double pos4_y = (start_pos_y + pos2_y) / 2;
 
     //Position5の座標
-    pos5_x = (pos2_x + pos3_x) / 2;
-    pos5_y = (pos2_y + pos3_y) / 2;
+    double pos5_x = (pos2_x + pos3_x) / 2;
+    double pos5_y = (pos2_y + pos3_y) / 2;
     
     //初期位置からPosition2までの線形補完
     LinearInterpolation(start_pos_x, start_pos_y, pos2_x, pos2_y, charVec);
@@ -75,9 +75,8 @@ void    LinkRobot::TextCoords(std::string c){
 
     for (int i = 0; i < 7; i++){
         if (Characters[i] == c){
-            return (this->*Charhandle[i])(&charVec);
-            return 0;
+            (this->*CharHandle[i])(charVec);
+            return ;
         }
     }
-    return -1;
 }

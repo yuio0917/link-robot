@@ -10,28 +10,28 @@
 class LinkRobot {
     private:
         //LinkRobotクラスのメンバ関数のアドレスを扱う関数ポインタの宣言
-        typedef void (LinkRobot::*HandlePtr)();
+        typedef void (LinkRobot::*HandlePtr)(std::vector<std::vector<float>>&);
         HandlePtr CharHandle[7];
 
-        void    getAPos();
-        void    getBPos();
-        void    getCPos();
-        void    getDPos();
-        void    getEPos();
-        void    getCirclePos();
-        void    getCrossPos();
-        void    TextCoords(char c);
+        void    getAPos(std::vector<std::vector<float>> &charVec);
+        // void    getBPos();
+        // void    getCPos();
+        // void    getDPos();
+        // void    getEPos();
+        // void    getCirclePos();
+        // void    getCrossPos();
+        void    TextCoords(std::string c);
 
         static const int N = 20; //分割数
         static const int squareSize = 20; //描画する文字範囲
         static const float start_pos_x = 40; //描画する初期位置のx座標
         static const float start_pos_y = 120; //描画する初期位置のy座標
 
-        std::vector<std::vector<double>> charVec; //描画する文字のx, y座標情報を格納
+        std::vector<std::vector<float>> charVec; //描画する文字のx, y座標情報を格納
         std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
 
-        float   dist_joint1_to_pen; //joint1からペン先までの距離
-        float   dist_joint2_to_pen; //joint2からペン先までの距離
+        // float   dist_joint1_to_pen; //joint1からペン先までの距離
+        // float   dist_joint2_to_pen; //joint2からペン先までの距離
 
         //各リンクの長さやjoinの座標
         double  joint1_x = 0;
@@ -55,19 +55,20 @@ class LinkRobot {
         float _l_virt, _phi; 
         int _delay;
         float _current_x, _current_y;
-        void solveIK(std::vector<std::vector<float>> &charvec);
+        void solveIK(std::vector<std::vector<double>> &charvec);
+        void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec);
 
     public:
         LinkRobot();
         ~LinkRobot();
 
         void begin();               // 初期化
-        void setSpeed(int delayMs); // スピード調整
-        void home();                // ホームへ戻る
-        void penUp();               // ペン上げ
-        void penDown();             // ペン下げ
-        void moveTo(float x, float y); // 指定座標へ移動
-        void drawChar(char c);      // 1文字書く
+        // void setSpeed(int delayMs); // スピード調整
+        // void home();                // ホームへ戻る
+        // void penUp();               // ペン上げ
+        // void penDown();             // ペン下げ
+        // void moveTo(float x, float y); // 指定座標へ移動
+        void drawChar(const std::string c);      // 1文字書く
         void drawString(); // 文字列を書く
 };
 

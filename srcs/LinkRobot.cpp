@@ -1,4 +1,4 @@
-#include "../include/LinkRobot.h"
+#include "../include/LinkRobot.hpp"
 
 LinkRobot::LinkRobot() : CharHandle({&LinkRobot::getAPos, &LinkRobot::getBPos,
         &LinkRobot::getCPos, &LinkRobot::getDPos, &LinkRobot::getEPos,
@@ -8,28 +8,27 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
-    servoL.attach(_pinL);
-    servoR.attach(_pinR);
-    servoZ.attach(_pinZ);
-    penUp();
+    servoL.attach(13);
+    // servoR.attach(_pinR);
+    // servoZ.attach(_pinZ);
 }
 
-void LinkRobot::setSpeed(int delayMs) {
-    _delay = delayMs;
-}
+// void LinkRobot::setSpeed(int delayMs) {
+//     _delay = delayMs;
+// }
 
-void LinkRobot::penUp() {
-    servoPen.write(90); delay(100);
-}
+// void LinkRobot::penUp() {
+//     servoPen.write(90); delay(100);
+// }
 
-void LinkRobot::penDown() {
-    servoPen.write(0); delay(100);
-}
+// void LinkRobot::penDown() {
+//     servoPen.write(0); delay(100);
+// }
 
 //制御
-void LinkRobot::moveTo(float x, float y) {
+// void LinkRobot::moveTo(float x, float y) {
 
-}
+// }
 
 void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec) {
     for (int i = 0; i < angleVec[0].size(); i++){
@@ -40,11 +39,11 @@ void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec) {
 }
 
 //文字書き部分
-void LinkRobot::drawChar(std::string c) {
+void LinkRobot::drawChar(const std::string c) {
     TextCoords(c);
-    solveIK(&charVec);
-    moveMotor(&angleVec);
-    penUp();
+    solveIK(charVec);
+    moveMotor(angleVec);
+    // penUp();
 }
 
 void LinkRobot::drawString() {

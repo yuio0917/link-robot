@@ -3,8 +3,8 @@
 void LinkRobot::solveIK(std::vector<std::vector<float>> &charvec) {
 
     for (int i = 0; i < charvec[0].size(); i++){
-        dist_joint1_to_pen = sqrt((charvec[0][i])*(charvec[0][i]) + (charvec[1][i])*(charvec[1][i]));
-        dist_joint2_to_pen = sqrt((charvec[0][i] - joint2_x)*(charvec[0][i] - joint2_x) + (charvec[1][i])*(charvec[1][i]));
+        double dist_joint1_to_pen = sqrt((charvec[0][i])*(charvec[0][i]) + (charvec[1][i])*(charvec[1][i]));
+        double dist_joint2_to_pen = sqrt((charvec[0][i] - joint2_x)*(charvec[0][i] - joint2_x) + (charvec[1][i])*(charvec[1][i]));
 
         double theta_13p = ((dist_joint1_to_pen)*(dist_joint1_to_pen) + l2*l2 - (l4 + l6)*(l4 + l6)) / (2*l2*dist_joint1_to_pen);
         theta_1 = std::acos(theta_13p) + atan2(charvec[1][i], charvec[0][i]);
