@@ -1,4 +1,4 @@
-#include "../include/LinkRobot.hpp"
+#include "include/LinkRobot.hpp"
 
 
 void    LinearInterpolation(float start_x, float start_y, float end_x, float end_y, std::vector<std::vector<float>> &charVec){
@@ -43,32 +43,32 @@ void    LinkRobot::getAPos(std::vector<std::vector<float>> &charVec){
     LinearInterpolation(pos4_x, pos4_y, pos5_x, pos5_y, charVec);
 }
 
-void    LinkRobot::getBPos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getBPos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::getCPos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getCPos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::getDPos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getDPos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::getEPos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getEPos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::getCirclePos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getCirclePos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::getCrossPos(std::vector<std::vector<float>> &charVec){
+// void    LinkRobot::getCrossPos(std::vector<std::vector<float>> &charVec){
 
-}
+// }
 
-void    LinkRobot::TextCoords(std::string c){
-    const std::string Characters[7] = {"A", "B", "C", "D", "E", "〇", "×"};
+void    LinkRobot::TextCoords(const char c){
+    const char Characters[7] = {'A', 'B', 'C', 'D', 'E', '〇', '×'};
 
     charVec.clear();
     charVec.push_back(std::vector<float>{start_pos_x, start_pos_y});

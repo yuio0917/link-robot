@@ -20,7 +20,7 @@ class LinkRobot {
         // void    getEPos();
         // void    getCirclePos();
         // void    getCrossPos();
-        void    TextCoords(std::string c);
+        void    TextCoords(const char c);
 
         //マクロ(#define)ではなく定数として扱う
         
@@ -57,8 +57,8 @@ class LinkRobot {
         float _l_virt, _phi; 
         int _delay;
         float _current_x, _current_y;
-        void solveIK(std::vector<std::vector<double>> &charvec);
-        void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec);
+        void    solveIK(std::vector<std::vector<float>> &charvec);
+        void    moveMotor(std::vector<std::vector<double>> &angleVec);
 
     public:
         LinkRobot();
@@ -70,8 +70,8 @@ class LinkRobot {
         // void penUp();               // ペン上げ
         // void penDown();             // ペン下げ
         // void moveTo(float x, float y); // 指定座標へ移動
-        void drawChar(const std::string c);      // 1文字書く
-        void drawString(); // 文字列を書く
+        void drawChar(const char c);      // 1文字書く
+        void drawString(const std::string &str); // 文字列を書く
 };
 
 #endif

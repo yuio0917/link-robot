@@ -1,4 +1,4 @@
-#include "../include/LinkRobot.hpp"
+#include "include/LinkRobot.hpp"
 
 void LinkRobot::solveIK(std::vector<std::vector<float>> &charvec) {
 
@@ -24,6 +24,7 @@ void LinkRobot::solveIK(std::vector<std::vector<float>> &charvec) {
 
         double theta_25p = ((dist_joint2_to_joint5)*(dist_joint2_to_joint5) + l3*l3 - l5*l5) / (2*l3*dist_joint2_to_joint5);
         theta_2 = atan2(joint5_y - joint2_y, joint5_x - joint2_x) - acos(theta_25p);
+        
         
         angleVec.push_back(std::vector<double>{theta_1, theta_2});
     }
