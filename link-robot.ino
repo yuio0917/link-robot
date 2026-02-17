@@ -8,8 +8,8 @@ void setup() {
 }
 
 void loop() {
-  // Use LinkRobot's API instead of referencing servos directly
-  robot.drawString("AA");
+  InitPosition();
+  robot.drawString("BB");
   delay(5000);
 }
 
