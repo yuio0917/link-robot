@@ -51,6 +51,8 @@ class LinkRobot {
         double   theta_1; //motor1の回転角度
         double   theta_2; //motor2の回転角度
 
+        std::string _str; //ユーザーから入力される文字列を格納する変数
+
         Servo servoL, servoR, servoPen;
         int _pinL, _pinR, _pinZ;
         float _d, _l1, _l2, _ext_x, _ext_y;
@@ -59,6 +61,7 @@ class LinkRobot {
         float _current_x, _current_y;
         void    solveIK(std::vector<std::vector<float>> &charvec);
         void    moveMotor(std::vector<std::vector<double>> &angleVec);
+        void    getInputString();
 
     public:
         LinkRobot();

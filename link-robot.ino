@@ -2,14 +2,23 @@
 
 LinkRobot robot;
 
+void  InitPosition(){
+  for (int i = 0; i <= 90; i += 10){
+    servoL.write(i);
+    servoR.write(i);
+    delay(100);
+  }
+}
+
 void setup() {
   Serial.begin(9600);
   robot.begin();
 }
 
 void loop() {
-  // Use LinkRobot's API instead of referencing servos directly
-  robot.drawString("AA");
+  InitPosition();
+  getInputString();
+  robot.drawString(str);
   delay(5000);
 }
 
