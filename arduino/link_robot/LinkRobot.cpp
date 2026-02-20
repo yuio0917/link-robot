@@ -1,9 +1,9 @@
 #include "LinkRobot.h"
 
 LinkRobot::LinkRobot()
-    : startPosX(30.0f), startPosY(120.0f),
+    : startPosX(-20.0f), startPosY(120.0f),
       _pinL(9), _pinR(10), _pinZ(11),
-      _delay(30), _currentX(30.0f), _currentY(120.0f) {}
+      _delay(30), _currentX(-20.0f), _currentY(120.0f) {}
 
 void LinkRobot::begin() {
     servoL.attach(_pinL);
