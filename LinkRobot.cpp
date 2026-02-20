@@ -8,8 +8,6 @@ LinkRobot::~LinkRobot(){}
 void LinkRobot::begin() {
     servoL.attach(13);
     servoR.attach(10);
-    // servoR.attach(_pinR);
-    // servoZ.attach(_pinZ);
 }
 
 // void LinkRobot::setSpeed(int delayMs) {
