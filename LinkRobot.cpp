@@ -32,7 +32,7 @@ void   LinkRobot::InitPosition(const float x, const float y){
 // }
 
 void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec) {
-    for (int i = 0; i < angleVec[0].size(); i++){
+    for (int i = 0; i < angleVec.size(); i++){
         servoL.write((int)angleVec[0][i]);
         servoR.write((int)angleVec[1][i]);
         delay(500);
