@@ -2,12 +2,9 @@
 
 LinkRobot robot;
 
-void  InitPosition(){
-  for (int i = 0; i <= 90; i += 10){
-    servoL.write(i);
-    servoR.write(i);
-    delay(100);
-  }
+void   LinkRobot::InitPosition(){
+  servoR.write(90);
+  servoL.write(90);
 }
 
 void setup() {
@@ -16,9 +13,8 @@ void setup() {
 }
 
 void loop() {
-  InitPosition();
-  getInputString();
-  robot.drawString(str);
+  robot.InitPosition();
+  robot.drawString("A");
   delay(5000);
 }
 

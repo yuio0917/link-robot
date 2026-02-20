@@ -61,7 +61,6 @@ class LinkRobot {
         float _current_x, _current_y;
         void    solveIK(std::vector<std::vector<float>> &charvec);
         void    moveMotor(std::vector<std::vector<double>> &angleVec);
-        void    getInputString();
 
     public:
         LinkRobot();
@@ -75,6 +74,7 @@ class LinkRobot {
         // void moveTo(float x, float y); // 指定座標へ移動
         void drawChar(const char c);      // 1文字書く
         void drawString(const std::string &str); // 文字列を書く
+        void    InitPosition();
 };
 
 #endif

@@ -46,18 +46,9 @@ void LinkRobot::drawChar(const char c) {
 }
 
 void LinkRobot::drawString(const std::string &str) {
-    servoR.write(30);
-    servoL.write(30);
-    delay(5000);
-
     for (int i = 0; i < str.length(); i++) {
         drawChar(str[i]);
         break;
         // moveTo(_current_x + 15, _current_y);
     }
-}
-
-void    LinkRobot::getInputString(){
-    std::cout << "描く文字列を入力してください" << std::endl;
-    std::getline(std::cin, _str);
 }
