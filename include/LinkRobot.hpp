@@ -74,7 +74,7 @@ class LinkRobot {
         // void moveTo(float x, float y); // 指定座標へ移動
         void drawChar(const char c);      // 1文字書く
         void drawString(const std::string &str); // 文字列を書く
-        void    InitPosition();
+        void    InitPosition(const float x, const float y);
 };
 
 #endif

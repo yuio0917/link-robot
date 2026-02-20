@@ -10,6 +10,11 @@ void LinkRobot::begin() {
     servoR.attach(10);
 }
 
+void   LinkRobot::InitPosition(float x, float y){
+  servoR.write(90);
+  servoL.write(90);
+}
+
 // void LinkRobot::setSpeed(int delayMs) {
 //     _delay = delayMs;
 // }

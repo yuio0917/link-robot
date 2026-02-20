@@ -2,18 +2,13 @@
 
 LinkRobot robot;
 
-void   LinkRobot::InitPosition(){
-  servoR.write(90);
-  servoL.write(90);
-}
-
 void setup() {
   Serial.begin(9600);
   robot.begin();
+  robot.InitPosition(x, y);
 }
 
 void loop() {
-  robot.InitPosition();
   robot.drawString("A");
   delay(5000);
 }
