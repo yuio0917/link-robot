@@ -5,7 +5,7 @@ LinkRobot robot;
 void setup() {
   Serial.begin(9600);
   robot.begin();
-  robot.InitPosition(x, y);
+  robot.InitPosition(0, 120);
 }
 
 void loop() {

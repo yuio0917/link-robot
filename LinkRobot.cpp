@@ -10,9 +10,8 @@ void LinkRobot::begin() {
     servoR.attach(10);
 }
 
-void   LinkRobot::InitPosition(float x, float y){
-  servoR.write(90);
-  servoL.write(90);
+void   LinkRobot::InitPosition(const float x, const float y){
+    charVec.push_back(std::vector<float>{x, y});
 }
 
 // void LinkRobot::setSpeed(int delayMs) {
