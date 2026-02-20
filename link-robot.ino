@@ -22,26 +22,12 @@ void loop() {
 // const int SERVO_R_PIN = 10;
 
 // void setup() {
-//   servoL.attach(SERVO_L_PIN);
-//   servoR.attach(SERVO_R_PIN);
+//   pinMode(LED_BUILTIN, OUTPUT);
 // }
 
 // void loop() {
-//   // 0 → 180度へゆっくり回転
-//   for (int angle = 0; angle <= 180; angle++) {
-//     servoL.write(angle);
-//     servoR.write(angle);
-//     delay(10);
-//   }
-
+//   digitalWrite(LED_BUILTIN, HIGH);
 //   delay(500);
-
-//   // 180 → 0度へ戻す
-//   for (int angle = 180; angle >= 0; angle--) {
-//     servoL.write(angle);
-//     servoR.write(angle);
-//     delay(10);
-//   }
-
+//   digitalWrite(LED_BUILTIN, LOW);
 //   delay(500);
 // }
