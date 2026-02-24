@@ -54,7 +54,11 @@ class LinkRobot {
         std::string _str; //ユーザーから入力される文字列を格納する変数
 
         Servo servoL, servoR, servoPen;
-        int _pinL, _pinR, _pinZ;
+
+        int _pinL = 13;
+        int _pinR = 10;
+        // int _pinZ;
+
         float _d, _l1, _l2, _ext_x, _ext_y;
         float _l_virt, _phi; 
         int _delay;

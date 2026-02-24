@@ -6,12 +6,18 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
+<<<<<<< HEAD
     servoL.attach(9);
     servoR.attach(10);
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
     solveIK(x, y);
+=======
+    servoL.attach(_pinL);
+    servoR.attach(_pinR);
+    // servoZ.attach(_pinZ);
+>>>>>>> main
 }
 
 // void LinkRobot::setSpeed(int delayMs) {
@@ -48,6 +54,13 @@ void LinkRobot::drawChar(const char c) {
 }
 
 void LinkRobot::drawString(const std::string &str) {
+<<<<<<< HEAD
+=======
+    // servoR.write(30);
+    // servoL.write(30);
+    // delay(5000);
+
+>>>>>>> main
     for (int i = 0; i < str.length(); i++) {
         drawChar(str[i]);
         break;

@@ -9,7 +9,12 @@ void setup() {
 }
 
 void loop() {
+<<<<<<< HEAD
   robot.drawString("A");
+=======
+  InitPosition();
+  robot.drawString("BB");
+>>>>>>> main
   delay(5000);
 }
 
