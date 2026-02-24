@@ -10,10 +10,10 @@
 class LinkRobot {
     private:
         //LinkRobotクラスのメンバ関数のアドレスを扱う関数ポインタの宣言
-        typedef void (LinkRobot::*HandlePtr)(std::vector<std::vector<float>>&);
+        typedef void (LinkRobot::*HandlePtr)();
         HandlePtr CharHandle[7];
 
-        void    getAPos(std::vector<std::vector<float>> &charVec);
+        void    getAPos();
         // void    getBPos();
         // void    getCPos();
         // void    getDPos();
@@ -26,10 +26,10 @@ class LinkRobot {
         
         static const int N = 20; //分割数
         static const int squareSize = 20; //描画する文字範囲
-        static constexpr float start_pos_x = 40; //描画する初期位置のx座標
-        static constexpr float start_pos_y = 120; //描画する初期位置のy座標
+        static constexpr float start_pos_x = 120; //描画する初期位置のx座標
+        static constexpr float start_pos_y = 20; //描画する初期位置のy座標
 
-        std::vector<std::vector<float>> charVec; //描画する文字のx, y座標情報を格納
+        //std::vector<std::vector<float>> charVec; //描画する文字のx, y座標情報を格納
         std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
 
         // float   dist_joint1_to_pen; //joint1からペン先までの距離
@@ -59,8 +59,9 @@ class LinkRobot {
         float _l_virt, _phi; 
         int _delay;
         float _current_x, _current_y;
-        void    solveIK(std::vector<std::vector<float>> &charvec);
-        void    moveMotor(std::vector<std::vector<double>> &angleVec);
+        void    solveIK(const float x, const float y);
+        void    moveMotor(const float theta1, const float theta2);
+        void    LinearInterpolation(float start_x, float start_y, float end_x, float end_y);
 
     public:
         LinkRobot();

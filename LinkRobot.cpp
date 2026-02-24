@@ -6,12 +6,12 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
-    servoL.attach(10);
-    servoR.attach(13);
+    servoL.attach(13);
+    servoR.attach(10);
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
-    charVec.push_back(std::vector<float>{x, y});
+    solveIK(x, y);
 }
 
 // void LinkRobot::setSpeed(int delayMs) {
@@ -31,19 +31,15 @@ void   LinkRobot::InitPosition(const float x, const float y){
 
 // }
 
-void LinkRobot::moveMotor(std::vector<std::vector<double>> &angleVec) {
-    for (int i = 0; i < angleVec.size(); i++){
-        servoL.write((int)angleVec[0][i]);
-        servoR.write((int)angleVec[1][i]);
+void LinkRobot::moveMotor(const float theta1, const float theta2) {
+        servoL.write((int)theta1);
+        servoR.write((int)theta2);
         delay(500);
-    }
 }
 
 //文字書き部分
 void LinkRobot::drawChar(const char c) {
     TextCoords(c);
-    solveIK(charVec);
-    moveMotor(angleVec);
     // penUp();
 }
 
