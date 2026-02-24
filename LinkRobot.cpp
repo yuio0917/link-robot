@@ -6,7 +6,7 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
-    servoL.attach(13);
+    servoL.attach(9);
     servoR.attach(10);
 }
 
@@ -32,10 +32,12 @@ void   LinkRobot::InitPosition(const float x, const float y){
 // }
 
 void LinkRobot::moveMotor(const float theta1, const float theta2) {
-    Serial.println(theta1);
-    Serial.println(theta2);
-    servoL.write((int)theta1);
-    servoR.write((int)theta2);
+    float degL = theta1 * (180.0f / (float)M_PI);
+    float degR = theta2 * (180.0f / (float)M_PI);
+    Serial.println(degL);
+    Serial.println(degR);
+    servoL.write((int)degL);
+    servoR.write((int)degR);
     delay(500);
 }
 
