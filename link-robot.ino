@@ -5,11 +5,11 @@ LinkRobot robot;
 void setup() {
   Serial.begin(9600);
   robot.begin();
-  robot.InitPosition(120, 0);
+  robot.InitPosition(120, 90);
 }
 
 void loop() {
-  // robot.drawString("A");
+  robot.drawString("A");
   delay(5000);
 }
 

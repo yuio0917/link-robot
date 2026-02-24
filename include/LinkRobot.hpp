@@ -25,9 +25,9 @@ class LinkRobot {
         //マクロ(#define)ではなく定数として扱う
         
         static const int N = 20; //分割数
-        static const int squareSize = 20; //描画する文字範囲
-        static constexpr float start_pos_x = 120; //描画する初期位置のx座標
-        static constexpr float start_pos_y = 20; //描画する初期位置のy座標
+        static const int squareSize = 40; //描画する文字範囲
+        static constexpr float start_pos_x = 40; //描画する初期位置のx座標
+        static constexpr float start_pos_y = 120; //描画する初期位置のy座標
 
         //std::vector<std::vector<float>> charVec; //描画する文字のx, y座標情報を格納
         std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
