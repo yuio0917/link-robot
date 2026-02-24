@@ -6,8 +6,8 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
-    servoL.attach(13);
-    servoR.attach(10);
+    servoL.attach(10);
+    servoR.attach(13);
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
