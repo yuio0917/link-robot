@@ -32,9 +32,11 @@ void   LinkRobot::InitPosition(const float x, const float y){
 // }
 
 void LinkRobot::moveMotor(const float theta1, const float theta2) {
-        servoL.write((int)theta1);
-        servoR.write((int)theta2);
-        delay(500);
+    Serial.println(theta1);
+    Serial.println(theta2);
+    servoL.write((int)theta1);
+    servoR.write((int)theta2);
+    delay(500);
 }
 
 //文字書き部分
