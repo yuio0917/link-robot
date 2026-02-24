@@ -8,7 +8,7 @@ void setup() {
     robot.setSpeed(30);
 
     robot.penUp();
-    robot.moveTo(-20, 120);
+    robot.moveTo(30, 150);
 }
 
 void loop() {

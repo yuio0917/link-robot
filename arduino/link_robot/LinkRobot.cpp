@@ -1,9 +1,9 @@
 #include "LinkRobot.h"
 
 LinkRobot::LinkRobot()
-    : startPosX(-20.0f), startPosY(120.0f),
+    : startPosX(30.0f), startPosY(120.0f),
       _pinL(9), _pinR(10), _pinZ(11),
-      _delay(30), _currentX(-20.0f), _currentY(120.0f) {}
+      _delay(30), _currentX(30.0f), _currentY(120.0f) {}
 
 void LinkRobot::begin() {
     servoL.attach(_pinL);
@@ -81,27 +81,8 @@ void LinkRobot::drawChar(char c) {
         case 'C': drawC(); break;
         case 'D': drawD(); break;
         case 'E': drawE(); break;
-        case 'F': drawF(); break;
-        case 'G': drawG(); break;
-        case 'H': drawH(); break;
-        case 'I': drawI(); break;
-        case 'J': drawJ(); break;
-        case 'K': drawK(); break;
-        case 'L': drawL(); break;
-        case 'M': drawM(); break;
-        case 'N': drawN(); break;
         case 'O': drawCircle(); break;
-        case 'P': drawP(); break;
-        case 'Q': drawQ(); break;
-        case 'R': drawR(); break;
-        case 'S': drawS(); break;
-        case 'T': drawT(); break;
-        case 'U': drawU(); break;
-        case 'V': drawV(); break;
-        case 'W': drawW(); break;
         case 'X': drawCross(); break;
-        case 'Y': drawY(); break;
-        case 'Z': drawZ(); break;
         default:
             Serial.print(F("[TextCoords] Unknown character: "));
             Serial.println(c);
