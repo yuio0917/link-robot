@@ -47,8 +47,27 @@ private:
     void drawC();
     void drawD();
     void drawE();
-    void drawCircle();
-    void drawCross();
+    void drawF();
+    void drawG();
+    void drawH();
+    void drawI();
+    void drawJ();
+    void drawK();
+    void drawL();
+    void drawM();
+    void drawN();
+    void drawCircle();  // O
+    void drawP();
+    void drawQ();
+    void drawR();
+    void drawS();
+    void drawT();
+    void drawU();
+    void drawV();
+    void drawW();
+    void drawCross();   // X
+    void drawY();
+    void drawZ();
 
 public:
     LinkRobot();
