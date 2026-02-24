@@ -42,9 +42,9 @@ void    LinkRobot::getAPos(){
     LinearInterpolation(pos4_x, pos4_y, pos5_x, pos5_y);
 }
 
-// void    LinkRobot::getBPos(std::vector<std::vector<float>> &charVec){
-
-// }
+void    LinkRobot::getBPos(std::vector<std::vector<float>> &charVec){
+    
+}
 
 // void    LinkRobot::getCPos(std::vector<std::vector<float>> &charVec){
 
