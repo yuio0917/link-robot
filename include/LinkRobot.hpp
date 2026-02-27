@@ -20,8 +20,9 @@ class LinkRobot {
         void    getEPos();
         void    getCirclePos();
         void    getCrossPos();
-        void    TextCoords(const char c);
 
+        void    penUp();
+        void    penDown();
         //マクロ(#define)ではなく定数として扱う
         
         static const int N = 20; //分割数
@@ -29,9 +30,6 @@ class LinkRobot {
         static const int squareSize = 50; //描画する文字範囲
         static constexpr float start_pos_x = 10; //描画する初期位置のx座標
         static constexpr float start_pos_y = 180; //描画する初期位置のy座標
-
-        //std::vector<std::vector<float>> charVec; //描画する文字のx, y座標情報を格納
-        std::vector<std::vector<double>> angleVec; //motor1とmotor2の角度情報を格納
 
         // float   dist_joint1_to_pen; //joint1からペン先までの距離
         // float   dist_joint2_to_pen; //joint2からペン先までの距離
@@ -52,13 +50,11 @@ class LinkRobot {
         double   theta_1; //motor1の回転角度
         double   theta_2; //motor2の回転角度
 
-        std::string _str; //ユーザーから入力される文字列を格納する変数
-
-        Servo servoL, servoR, servoZ, servoPen;
+        Servo servoL, servoR, servoZ;
 
         int _pinL = 9;
         int _pinR = 10;
-        // int _pinZ;
+        int _pinZ = 11;
 
         float _d, _l1, _l2, _ext_x, _ext_y;
         float _l_virt, _phi; 
@@ -73,10 +69,6 @@ class LinkRobot {
         ~LinkRobot();
 
         void begin();               // 初期化
-        // void setSpeed(int delayMs); // スピード調整
-        // void home();                // ホームへ戻る
-        // void penUp();               // ペン上げ
-        // void penDown();             // ペン下げ
         // void moveTo(float x, float y); // 指定座標へ移動
         void drawChar(const char c);      // 1文字書く
         void drawString(const std::string &str); // 文字列を書く

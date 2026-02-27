@@ -7,26 +7,14 @@ LinkRobot::~LinkRobot(){}
 
 //初期化
 void LinkRobot::begin() {
-    servoL.attach(9);
-    servoR.attach(10);
-    // servoZ.attach(10);
+    servoL.attach(_pinL);
+    servoR.attach(_pinR);
+    servoZ.attach(_pinZ);
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
    solveIK(x, y);
 }
-
-// void LinkRobot::setSpeed(int delayMs) {
-//     _delay = delayMs;
-// }
-
-// void LinkRobot::penUp() {
-//     servoPen.write(90); delay(100);
-// }
-
-// void LinkRobot::penDown() {
-//     servoPen.write(0); delay(100);
-// }
 
 //制御
 // void LinkRobot::moveTo(float x, float y) {
@@ -41,12 +29,6 @@ void LinkRobot::moveMotor(const float theta1, const float theta2) {
     servoL.write((int)degL);
     servoR.write((int)degR);
     delay(500);
-}
-
-//文字書き部分
-void LinkRobot::drawChar(const char c) {
-    TextCoords(c);
-    // penUp();
 }
 
 void LinkRobot::drawString(const std::string &str) {

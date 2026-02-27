@@ -213,26 +213,14 @@ void    LinkRobot::getCrossPos(){
     double x_left_bottom = start_pos_x;
     double y_left_bottom = start_pos_y;
     
-    //左上から右下への対角線（7分割してLinearInterpolationを連続実行）
-    for (int i = 0; i < N; i++) {
-        double start_x = x_left_top + (x_right_bottom - x_left_top) * i / N;
-        double start_y = y_left_top + (y_right_bottom - y_left_top) * i / N;
-        double end_x = x_left_top + (x_right_bottom - x_left_top) * (i + 1) / N;
-        double end_y = y_left_top + (y_right_bottom - y_left_top) * (i + 1) / N;
-        LinearInterpolation(start_x, start_y, end_x, end_y);
-    }
-    
-    //右上から左下への対角線（7分割してLinearInterpolationを連続実行）
-    for (int i = 0; i < N; i++) {
-        double start_x = x_right_top + (x_left_bottom - x_right_top) * i / N;
-        double start_y = y_right_top + (y_left_bottom - y_right_top) * i / N;
-        double end_x = x_right_top + (x_left_bottom - x_right_top) * (i + 1) / N;
-        double end_y = y_right_top + (y_left_bottom - y_right_top) * (i + 1) / N;
-        LinearInterpolation(start_x, start_y, end_x, end_y);
-    }
+    LinearInterpolation(x_left_top, y_left_top, x_right_bottom, y_right_bottom);
+    penUp();
+    solveIK(x_right_top, y_right_top);
+    penDown();
+    LinearInterpolation(x_right_top, y_right_top, x_left_bottom, y_left_bottom);
 }
 
-void    LinkRobot::TextCoords(const char c){
+void    LinkRobot::drawChar(const char c){
     const char Characters[7] = {'A', 'B', 'C', 'D', 'E', 'O', 'X'};
 
     for (int i = 0; i < 7; i++){
