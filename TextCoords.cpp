@@ -43,12 +43,12 @@ void    LinkRobot::getAPos(){
 }
 
 void    LinkRobot::getBPos(){
-    const double semiMajor = 10;  //楕円の長軸
-    const double semiMinor = 5;   //楕円の短軸
+    const double semiMajor = squareSize / 2;  //楕円の長軸
+    const double semiMinor = squareSize / 4;   //楕円の短軸
     
     //p2の座標
     double p2_x = start_pos_x;
-    double p2_y = start_pos_y + 20;
+    double p2_y = start_pos_y + squareSize;
     
     //上楕円の中心座標
     double cx_1 = start_pos_x;
@@ -79,21 +79,24 @@ void    LinkRobot::getBPos(){
 }
 
 void    LinkRobot::getCPos(){
-    const double semiMajor = 10;  //楕円の長軸
-    const double semiMinor = 10;   //楕円の短軸
+    double cx = start_pos_x + (squareSize / 2); //Cを描く円の中心x座標
+    double cy = start_pos_y + (squareSize / 2); //Cを描く円の中心y座標
+
+    const double semiMajor = squareSize / 2;  //楕円の長軸
+    const double semiMinor = squareSize / 2;   //楕円の短軸
     
     //π/4から7π/4までの角度で円弧を描画
     for (int i = 0; i < N; i++) {
         double theta = M_PI / 4.0 + (i / (N - 1.0)) * (7.0 * M_PI / 4.0 - M_PI / 4.0);
-        double px = start_pos_x + semiMajor * cos(theta);
-        double py = start_pos_y + semiMinor * sin(theta);
+        double px = cx + semiMajor * cos(theta);
+        double py = cy + semiMinor * sin(theta);
         solveIK(px, py);
     }
 }
 
 void    LinkRobot::getDPos(){
-    const double semiMajor = 10;  //楕円の長軸
-    const double semiMinor = 10;   //楕円の短軸
+    const double semiMajor = squareSize / 2;  //楕円の長軸
+    const double semiMinor = squareSize / 2;   //楕円の短軸
     
     //p2の座標
     double p2_x = start_pos_x;
@@ -108,7 +111,7 @@ void    LinkRobot::getDPos(){
     
     //楕円の中心座標
     double cx = start_pos_x;
-    double cy = 130;
+    double cy = start_pos_y + (squareSize / 2);
     
     //右半円を描画
     for (int i = 0; i < N; i++) {
@@ -120,20 +123,17 @@ void    LinkRobot::getDPos(){
 }
 
 void    LinkRobot::getEPos(){
-    //Eを描画
-    const int n = 31;                  //分割数
-    
     //m1の座標
     double m1_x = start_pos_x + squareSize;
-    double m1_y = start_pos_y + 20;
+    double m1_y = start_pos_y + squareSize;
     
     //m2の座標
-    double m2_x = m1_x - 20;
+    double m2_x = m1_x - squareSize;
     double m2_y = m1_y;
     
     //m3の座標
-    double m3_x = m1_x - 20;
-    double m3_y = m1_y - 20;
+    double m3_x = m1_x - squareSize;
+    double m3_y = m1_y - squareSize;
     
     //m4の座標
     double m4_x = m1_x;
@@ -148,44 +148,47 @@ void    LinkRobot::getEPos(){
     double m6_y = (m4_y + m1_y) / 2.0;
     
     //m1からm2の線分
-    for (int i = 0; i < n; i++) {
-        double px = m1_x + (i / (n - 1.0)) * (m2_x - m1_x);
-        double py = m1_y + (i / (n - 1.0)) * (m2_y - m1_y);
+    for (int i = 0; i < N; i++) {
+        double px = m1_x + (i / (N - 1.0)) * (m2_x - m1_x);
+        double py = m1_y + (i / (N - 1.0)) * (m2_y - m1_y);
         solveIK(px, py);
     }
     
     //m2からm3の線分
-    for (int i = 0; i < n; i++) {
-        double px = m2_x + (i / (n - 1.0)) * (m3_x - m2_x);
-        double py = m2_y + (i / (n - 1.0)) * (m3_y - m2_y);
+    for (int i = 0; i < N; i++) {
+        double px = m2_x + (i / (N - 1.0)) * (m3_x - m2_x);
+        double py = m2_y + (i / (N - 1.0)) * (m3_y - m2_y);
         solveIK(px, py);
     }
     
     //m3からm4の線分
-    for (int i = 0; i < n; i++) {
-        double px = m3_x + (i / (n - 1.0)) * (m4_x - m3_x);
-        double py = m3_y + (i / (n - 1.0)) * (m4_y - m3_y);
+    for (int i = 0; i < N; i++) {
+        double px = m3_x + (i / (N - 1.0)) * (m4_x - m3_x);
+        double py = m3_y + (i / (N - 1.0)) * (m4_y - m3_y);
         solveIK(px, py);
     }
     
     //m5からm6の線分
-    for (int i = 0; i < n; i++) {
-        double px = m5_x + (i / (n - 1.0)) * (m6_x - m5_x);
-        double py = m5_y + (i / (n - 1.0)) * (m6_y - m5_y);
+    for (int i = 0; i < N; i++) {
+        double px = m5_x + (i / (N - 1.0)) * (m6_x - m5_x);
+        double py = m5_y + (i / (N - 1.0)) * (m6_y - m5_y);
         solveIK(px, py);
     }
 }
 
 void    LinkRobot::getCirclePos(){
+    double xc = start_pos_x + (squareSize / 2);
+    double yc = start_pos_y + (squareSize / 2);
+
     //各セグメントで円を描画
     for (int i = 0; i < N; i++) {
         double theta1 = 2.0 * M_PI * i / N;
         double theta2 = 2.0 * M_PI * (i + 1) / N;
         
-        double x1 = start_pos_x + r * cos(theta1);
-        double y1 = start_pos_y + r * sin(theta1);
-        double x2 = start_pos_x + r * cos(theta2);
-        double y2 = start_pos_y + r * sin(theta2);
+        double x1 = xc + r * cos(theta1);
+        double y1 = yc + r * sin(theta1);
+        double x2 = xc + r * cos(theta2);
+        double y2 = yc + r * sin(theta2);
         
         //各セグメントをLinearInterpolationで描画
         LinearInterpolation(x1, y1, x2, y2);
