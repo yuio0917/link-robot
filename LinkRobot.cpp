@@ -10,6 +10,7 @@ void LinkRobot::begin() {
     servoL.attach(_pinL);
     servoR.attach(_pinR);
     servoZ.attach(_pinZ);
+    servoZ.write(90);
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
