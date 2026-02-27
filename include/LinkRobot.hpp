@@ -14,17 +14,18 @@ class LinkRobot {
         HandlePtr CharHandle[7];
 
         void    getAPos();
-        // void    getBPos();
-        // void    getCPos();
-        // void    getDPos();
-        // void    getEPos();
-        // void    getCirclePos();
-        // void    getCrossPos();
+        void    getBPos();
+        void    getCPos();
+        void    getDPos();
+        void    getEPos();
+        void    getCirclePos();
+        void    getCrossPos();
         void    TextCoords(const char c);
 
         //マクロ(#define)ではなく定数として扱う
         
         static const int N = 20; //分割数
+        static const int r = 10; //円の半径
         static const int squareSize = 40; //描画する文字範囲
         static constexpr float start_pos_x = 40; //描画する初期位置のx座標
         static constexpr float start_pos_y = 120; //描画する初期位置のy座標
