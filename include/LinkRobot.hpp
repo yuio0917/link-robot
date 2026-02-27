@@ -25,8 +25,8 @@ class LinkRobot {
         //マクロ(#define)ではなく定数として扱う
         
         static const int N = 20; //分割数
-        static const int r = 10; //円の半径
-        static const int squareSize = 30; //描画する文字範囲
+        static const int r = 25; //円の半径
+        static const int squareSize = 50; //描画する文字範囲
         static constexpr float start_pos_x = 10; //描画する初期位置のx座標
         static constexpr float start_pos_y = 180; //描画する初期位置のy座標
 
@@ -39,14 +39,14 @@ class LinkRobot {
         //各リンクの長さやjoinの座標
         double  joint1_x = 0;
         double  joint1_y = 0;
-        double  joint2_x = 60;
+        double  joint2_x = l1;
         double  joint2_y = 0;
         
         static const int    l1 = 60;
-        static const int    l2 = 60;
-        static const int    l3 = 60;
-        static const int    l4 = 60;
-        static const int    l5 = 60;
+        static const int    l2 = 135;
+        static const int    l3 = 135;
+        static const int    l4 = 85;
+        static const int    l5 = 85;
         static const int    l6 = 50;
 
         double   theta_1; //motor1の回転角度
@@ -54,9 +54,9 @@ class LinkRobot {
 
         std::string _str; //ユーザーから入力される文字列を格納する変数
 
-        Servo servoL, servoR, servoPen;
+        Servo servoL, servoR, servoZ, servoPen;
 
-        int _pinL = 13;
+        int _pinL = 9;
         int _pinR = 10;
         // int _pinZ;
 

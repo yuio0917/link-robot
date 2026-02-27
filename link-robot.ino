@@ -2,19 +2,14 @@
 
 LinkRobot robot;
 
-void setup() {
+void setup(){
   Serial.begin(9600);
   robot.begin();
-  robot.InitPosition(120, 90);
 }
 
 void loop() {
-<<<<<<< HEAD
-  robot.drawString("A");
-=======
-  InitPosition();
-  robot.drawString("BB");
->>>>>>> main
+  robot.InitPosition(10, 180);
+  robot.drawString("O");
   delay(5000);
 }
 
