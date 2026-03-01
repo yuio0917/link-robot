@@ -168,6 +168,10 @@ void    LinkRobot::getEPos(){
         solveIK(px, py);
     }
     
+    penUp();
+    solveIK(m5_x, m5_y); //m5の位置に移動
+    penDown();
+
     //m5からm6の線分
     for (int i = 0; i < N; i++) {
         double px = m5_x + (i / (N - 1.0)) * (m6_x - m5_x);
