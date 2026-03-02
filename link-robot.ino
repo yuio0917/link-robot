@@ -9,6 +9,6 @@ void setup(){
 
 void loop() {
   robot.InitPosition(10, 180);
-  robot.drawString("X");
+  robot.drawString("ACE");
   delay(5000);
 }
