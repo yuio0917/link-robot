@@ -6,9 +6,9 @@ void    LinkRobot::LinearInterpolation(float start_x, float start_y, float end_x
     float t = 0.0f;
     float px;
     float py;
-    
-    for (int i = 1; i <= 15.0f; i++){
-        t = i / 15.0f;
+
+    for (int i = 0; i <= N; i++){
+        t = (float)i / N;
         px = (end_x - start_x) * t + start_x; //x座標の線形補完の計算
         py = (end_y - start_y) * t + start_y; //y座標の線形補完の計算
         solveIK(px, py);

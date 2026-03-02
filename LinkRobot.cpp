@@ -13,9 +13,11 @@ void LinkRobot::begin() {
     servoL.write(90);
     servoR.write(90);
     servoZ.write(90);
+    delay(15000); //0点合わせ待ち(15秒)
 }
 
 void   LinkRobot::InitPosition(const float x, const float y){
+   penUp(); //移動前にペンを上げる
    start_pos_x = x;
    start_pos_y = y;
    solveIK(x, y);
@@ -38,6 +40,7 @@ void LinkRobot::moveMotor(const float theta1, const float theta2) {
 
 void LinkRobot::drawString(const std::string &str) {
     static constexpr float gap = 5; //文字間の隙間(mm)
+    penDown(); //描画開始前にペンを下ろす
     for (int i = 0; i < str.length(); i++) {
         drawChar(str[i]);
         // 最後の文字以外は次の文字の開始位置へ移動
@@ -48,4 +51,5 @@ void LinkRobot::drawString(const std::string &str) {
             penDown();
         }
     }
+    penUp(); //描画完了後にペンを上げる
 }
