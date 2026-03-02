@@ -1,9 +1,9 @@
 #include "LinkRobot.h"
 
 LinkRobot::LinkRobot()
-    : startPosX(30.0f), startPosY(120.0f),
+    : startPosX(15.0f), startPosY(165.0f),
       _pinL(9), _pinR(10), _pinZ(11),
-      _delay(30), _currentX(30.0f), _currentY(120.0f) {}
+      _delay(30), _currentX(0.0f), _currentY(165.0f) {}
 
 void LinkRobot::begin() {
     servoL.attach(_pinL);
@@ -29,7 +29,7 @@ void LinkRobot::penDown() {
 
 void LinkRobot::home() {
     penUp();
-    moveTo(d / 2.0f, 120.0f);
+    moveTo(d / 2.0f, 165.0f);
     Serial.println(F("[Robot] Home position"));
 }
 
@@ -40,8 +40,14 @@ void LinkRobot::moveTo(float x, float y) {
         float degR = thetaR * (180.0f / (float)M_PI);
         degL = constrain(degL, servoMin, servoMax);
         degR = constrain(degR, servoMin, servoMax);
-        servoL.write((int)degL);
-        servoR.write((int)degR);
+        int writeL = 180 - (int)degL;  // 左サーボ反転
+        int writeR = 180 - (int)degR;  // 右サーボ反転
+        Serial.print(F("L="));
+        Serial.print(writeL);
+        Serial.print(F(" R="));
+        Serial.println(writeR);
+        servoL.write(writeL);
+        servoR.write(writeR);
         delay(_delay);
         _currentX = x;
         _currentY = y;

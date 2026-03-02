@@ -32,7 +32,7 @@ void LinkRobot::penDown() {
 
 void LinkRobot::home() {
     penUp();
-    moveTo(d / 2.0f, 120.0f);
+    moveTo(d / 2.0f, 100.0f);
     std::cout << "[Robot] Home position" << std::endl;
 }
 

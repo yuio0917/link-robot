@@ -30,29 +30,31 @@ private:
 
     // 分割数・描画サイズ
     static constexpr int N = 20;
-    static constexpr float squareSize = 20.0f;
+    static constexpr float squareSize = 28.0f;
     static constexpr float charSpacing = 10.0f;
 
-    // ロボット物理パラメータ (MATLABシミュレーションと一致)
-    static constexpr float d  = 60.0f;  // モータ間距離
-    static constexpr float l1 = 80.0f;  // モータ側リンク長
-    static constexpr float l2 = 100.0f; // ペン側リンク長
+    // ロボット物理パラメータ (構成B: 5文字28mm)
+    static constexpr float d  = 50.0f;     // モータ間距離
+    static constexpr float l1 = 135.0f;    // クランク長（両腕共通）
+    static constexpr float l2 = 85.0f;     // コネクティングロッド長（両腕共通）
+    static constexpr float penExt = 60.0f; // ペン延長距離（左腕合流点から）
+    static constexpr float l2Eff = l2 + penExt; // 左腕実効リンク長 (145mm)
 
     // サーボ可動範囲 (度)
-    static constexpr float servoMin = 10.0f;
-    static constexpr float servoMax = 170.0f;
+    static constexpr float servoMin = 30.0f;
+    static constexpr float servoMax = 150.0f;
 
     // 描画初期位置
-    float startPosX = 30.0f; // d/2 = 左右中央
-    float startPosY = 120.0f;
+    float startPosX = 15.0f;
+    float startPosY = 165.0f;
 
     // サーボ・ピン
     Servo servoL, servoR, servoPen;
     int _pinL = 9, _pinR = 10, _pinZ = 11;
 
     int _delay = 30;
-    float _currentX = 30.0f;
-    float _currentY = 120.0f;
+    float _currentX = 0.0f;
+    float _currentY = 100.0f;
 
     // IK: 単点
     bool solveIKPoint(float x, float y, float& thetaL, float& thetaR);

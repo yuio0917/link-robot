@@ -8,10 +8,10 @@ void setup() {
     robot.setSpeed(30);
 
     robot.penUp();
-    robot.moveTo(30, 150);
+    robot.moveTo(15, 165);
 }
 
 void loop() {
-    robot.drawString("AB");
+    robot.drawString("ABCDE");
     delay(100);
 }
