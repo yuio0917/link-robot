@@ -31,7 +31,12 @@ void    LinkRobot::getAPos(){
     //Position5の座標
     double pos5_x = (pos2_x + pos3_x) / 2;
     double pos5_y = (pos2_y + pos3_y) / 2;
-    
+
+    //1点目に移動してからペンを下ろす
+    penUp();
+    solveIK(start_pos_x, start_pos_y);
+    penDown();
+
     //初期位置からPosition2までの線形補完
     LinearInterpolation(start_pos_x, start_pos_y, pos2_x, pos2_y);
     //Position2からPosition3までの線形補完
@@ -45,19 +50,24 @@ void    LinkRobot::getAPos(){
 void    LinkRobot::getBPos(){
     const double semiMajor = squareSize;  //楕円の長軸
     const double semiMinor = squareSize / 4;   //楕円の短軸
-    
+
     //p2の座標
     double p2_x = start_pos_x;
     double p2_y = start_pos_y + squareSize;
-    
+
     //上楕円の中心座標
     double cx_1 = start_pos_x;
     double cy_1 = (p2_y + (start_pos_y + p2_y) / 2) / 2;
-    
+
     //下楕円の中心座標
     double cx_2 = start_pos_x;
     double cy_2 = (start_pos_y + (start_pos_y + p2_y) / 2) / 2;
-    
+
+    //1点目に移動してからペンを下ろす
+    penUp();
+    solveIK(start_pos_x, start_pos_y);
+    penDown();
+
     //p1からp2への線形補完
     LinearInterpolation(start_pos_x, start_pos_y, p2_x, p2_y);
     
@@ -84,7 +94,13 @@ void    LinkRobot::getCPos(){
 
     const double semiMajor = squareSize / 2;  //楕円の長軸
     const double semiMinor = squareSize / 2;   //楕円の短軸
-    
+
+    //1点目(π/4の位置)に移動してからペンを下ろす
+    double first_theta = M_PI / 4.0;
+    penUp();
+    solveIK(cx + semiMajor * cos(first_theta), cy + semiMinor * sin(first_theta));
+    penDown();
+
     //π/4から7π/4までの角度で円弧を描画
     for (int i = 0; i < 20; i++) {
         double theta = M_PI / 4.0 + (i / (N - 1.0)) * (7.0 * M_PI / 4.0 - M_PI / 4.0);
@@ -97,11 +113,16 @@ void    LinkRobot::getCPos(){
 void    LinkRobot::getDPos(){
     const double semiMajor = squareSize / 1.5;  //楕円の長軸
     const double semiMinor = squareSize / 2;   //楕円の短軸
-    
+
     //p2の座標
     double p2_x = start_pos_x;
     double p2_y = start_pos_y + squareSize;
-    
+
+    //1点目に移動してからペンを下ろす
+    penUp();
+    solveIK(start_pos_x, start_pos_y);
+    penDown();
+
     //縦線を描画
     for (int i = 0; i < N; i++) {
         double px = start_pos_x + (i / (N - 1.0)) * (p2_x - start_pos_x);
@@ -126,27 +147,32 @@ void    LinkRobot::getEPos(){
     //m1の座標
     double m1_x = start_pos_x + squareSize;
     double m1_y = start_pos_y + squareSize;
-    
+
     //m2の座標
     double m2_x = m1_x - squareSize;
     double m2_y = m1_y;
-    
+
     //m3の座標
     double m3_x = m1_x - squareSize;
     double m3_y = m1_y - (1.5 * squareSize);
-    
+
     //m4の座標
     double m4_x = m1_x;
     double m4_y = m3_y;
-    
+
     //m5の座標（中点）
     double m5_x = (m2_x + m3_x) / 2.0;
     double m5_y = (m2_y + m3_y) / 2.0;
-    
+
     //m6の座標（中点）
     double m6_x = (m4_x + m1_x) / 2.0;
     double m6_y = (m4_y + m1_y) / 2.0;
-    
+
+    //1点目(m1=右上)に移動してからペンを下ろす
+    penUp();
+    solveIK(m1_x, m1_y);
+    penDown();
+
     //m1からm2の線分
     for (int i = 0; i < N; i++) {
         double px = m1_x + (i / (N - 1.0)) * (m2_x - m1_x);
@@ -187,6 +213,11 @@ void    LinkRobot::getCirclePos(){
     double semiMajor = 25;
     double semiMinor = 37.5;
 
+    //1点目(θ=0の位置)に移動してからペンを下ろす
+    penUp();
+    solveIK(xc + semiMajor, yc);
+    penDown();
+
     //各セグメントで円を描画
     for (int i = 0; i <= N; i++) {
         double theta1 = (2.0 * M_PI * i) / N;
@@ -204,19 +235,24 @@ void    LinkRobot::getCrossPos(){
     //左上座標
     double x_left_top = start_pos_x;
     double y_left_top = start_pos_y + 50;
-    
+
     //右下座標
     double x_right_bottom = start_pos_x + 30;
     double y_right_bottom = start_pos_y;
-    
+
     //右上座標
     double x_right_top = start_pos_x + 30;
     double y_right_top = start_pos_y + 50;
-    
+
     //左下座標
     double x_left_bottom = start_pos_x;
     double y_left_bottom = start_pos_y;
-    
+
+    //1点目(左上)に移動してからペンを下ろす
+    penUp();
+    solveIK(x_left_top, y_left_top);
+    penDown();
+
     LinearInterpolation(x_left_top, y_left_top, x_right_bottom, y_right_bottom);
     penUp();
     solveIK(x_right_top, y_right_top);

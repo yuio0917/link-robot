@@ -40,15 +40,11 @@ void LinkRobot::moveMotor(const float theta1, const float theta2) {
 
 void LinkRobot::drawString(const std::string &str) {
     static constexpr float gap = 5; //文字間の隙間(mm)
-    penDown(); //描画開始前にペンを下ろす
     for (int i = 0; i < str.length(); i++) {
-        drawChar(str[i]);
+        drawChar(str[i]); //各文字内でpenUp→1点目移動→penDownを行う
         // 最後の文字以外は次の文字の開始位置へ移動
         if (i < (int)str.length() - 1) {
-            penUp();
             start_pos_x += squareSize + gap;
-            solveIK(start_pos_x, start_pos_y);
-            penDown();
         }
     }
     penUp(); //描画完了後にペンを上げる
