@@ -10,6 +10,8 @@ void LinkRobot::begin() {
     servoL.attach(_pinL);
     servoR.attach(_pinR);
     servoZ.attach(_pinZ);
+
+    penUp();
     servoZ.write(89);
 }
 
@@ -35,6 +37,8 @@ void LinkRobot::moveMotor(const float theta1, const float theta2) {
 }
 
 void LinkRobot::drawString(const std::string &str) {
+    penDown();
+    
     if (str.size() == 1)
         drawChar(str[0]);
     else{

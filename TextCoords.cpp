@@ -227,7 +227,7 @@ void    LinkRobot::getCrossPos(){
 
 void    LinkRobot::drawChar(const char c){
     const char Characters[7] = {'A', 'B', 'C', 'D', 'E', 'O', 'X'};
-
+    
     for (int i = 0; i < 7; i++){
         if (Characters[i] == c){
             (this->*CharHandle[i])();
