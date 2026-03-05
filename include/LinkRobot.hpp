@@ -6,6 +6,7 @@
 #include <vector>  
 #include <iostream>
 #include <cmath>
+#include <string>
 
 class LinkRobot {
     private:
