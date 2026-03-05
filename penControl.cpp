@@ -11,7 +11,7 @@ void    LinkRobot::penUp(){
 void    LinkRobot::penDown(){
     servoZ.write(89); //停止
     delay(1000);
-    servoZ.write(78); //下げ
+    servoZ.write(70); //下げ
     delay(1000);
     servoZ.write(89); //停止
 }
