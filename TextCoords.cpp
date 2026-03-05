@@ -36,8 +36,12 @@ void    LinkRobot::getAPos(){
     LinearInterpolation(start_pos_x, start_pos_y, pos2_x, pos2_y);
     //Position2からPosition3までの線形補完
     LinearInterpolation(pos2_x, pos2_y, pos3_x, pos3_y);
-    //Position3からPosition4までの線形補完
-    LinearInterpolation(pos3_x, pos3_y, pos4_x, pos4_y);
+
+    penUp();
+    solveIK(pos4_x, pos4_y);
+    penDown();
+    // //Position3からPosition4までの線形補完
+    // LinearInterpolation(pos3_x, pos3_y, pos4_x, pos4_y);
     //Position4からPosition5までの線形補完
     LinearInterpolation(pos4_x, pos4_y, pos5_x, pos5_y);
 }
