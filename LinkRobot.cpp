@@ -21,7 +21,7 @@ void   LinkRobot::InitPosition(const float x, const float y){
 
 //制御
 void LinkRobot::moveTo() {
-    start_pos_x += squareSize + 
+    start_pos_x += squareSize + gap;
 }
 
 void LinkRobot::moveMotor(const float theta1, const float theta2) {

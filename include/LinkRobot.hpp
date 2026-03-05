@@ -44,6 +44,8 @@ class LinkRobot {
         static const int    l5 = 85;
         static const int    l6 = 50;
 
+        static const int gap = 10; //文字間隔(mm)
+
         double   theta_1; //motor1の回転角度
         double   theta_2; //motor2の回転角度
 
@@ -56,6 +58,7 @@ class LinkRobot {
         void    solveIK(const float x, const float y);
         void    moveMotor(const float theta1, const float theta2);
         void    LinearInterpolation(float start_x, float start_y, float end_x, float end_y);
+
 
     public:
         LinkRobot();
