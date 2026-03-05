@@ -35,8 +35,12 @@ void LinkRobot::moveMotor(const float theta1, const float theta2) {
 }
 
 void LinkRobot::drawString(const std::string &str) {
-    for (int i = 0; i < str.length(); i++) {
-        drawChar(str[i]);
-        moveTo();
+    if (str.size() == 1)
+        drawChar(str[0]);
+    else{
+        for (int i = 0; i < str.length(); i++) {
+            drawChar(str[i]);
+            moveTo();
+        }
     }
 }
