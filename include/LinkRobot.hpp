@@ -28,8 +28,8 @@ class LinkRobot {
         static const int N = 20; //分割数
         static const int r = 25; //円の半径
         static const int squareSize = 50; //描画する文字範囲
-        static constexpr float start_pos_x = 10; //描画する初期位置のx座標
-        static constexpr float start_pos_y = 180; //描画する初期位置のy座標
+        float start_pos_x; //描画する初期位置のx座標
+        float start_pos_y; //描画する初期位置のy座標
 
         //各リンクの長さやjoinの座標
         double  joint1_x = 0;
