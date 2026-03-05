@@ -1,15 +1,17 @@
 #include "include/LinkRobot.hpp"
 
 void    LinkRobot::penUp(){
-    servoZ.write(90);//停止
+    servoZ.write(89); //停止
     delay(1000);
-    servoZ.write(0);//上げ
+    servoZ.write(93); //上げ方向に回転
     delay(1000);
-    servoZ.write(90);//上げ状態を停止
+    servoZ.write(89); //停止
 }
 
 void    LinkRobot::penDown(){
-    servoZ.write(180);//下げ
+    servoZ.write(89); //停止
     delay(1000);
-    servoZ.write(90);//下げ状態を停止
+    servoZ.write(81); //下げ
+    delay(1000);
+    servoZ.write(89); //停止
 }
