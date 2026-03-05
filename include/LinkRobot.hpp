@@ -21,7 +21,6 @@ class LinkRobot {
         void    getEPos();
         void    getCirclePos();
         void    getCrossPos();
-
         void    penUp();
         void    penDown();
         //マクロ(#define)ではなく定数として扱う
@@ -31,9 +30,6 @@ class LinkRobot {
         static const int squareSize = 50; //描画する文字範囲
         static constexpr float start_pos_x = 10; //描画する初期位置のx座標
         static constexpr float start_pos_y = 180; //描画する初期位置のy座標
-
-        // float   dist_joint1_to_pen; //joint1からペン先までの距離
-        // float   dist_joint2_to_pen; //joint2からペン先までの距離
 
         //各リンクの長さやjoinの座標
         double  joint1_x = 0;
@@ -57,10 +53,6 @@ class LinkRobot {
         int _pinR = 10;
         int _pinZ = 11;
 
-        float _d, _l1, _l2, _ext_x, _ext_y;
-        float _l_virt, _phi; 
-        int _delay;
-        float _current_x, _current_y;
         void    solveIK(const float x, const float y);
         void    moveMotor(const float theta1, const float theta2);
         void    LinearInterpolation(float start_x, float start_y, float end_x, float end_y);
@@ -70,7 +62,7 @@ class LinkRobot {
         ~LinkRobot();
 
         void begin();               // 初期化
-        // void moveTo(float x, float y); // 指定座標へ移動
+        void moveTo(); // 指定座標へ移動
         void drawChar(const char c);      // 1文字書く
         void drawString(const std::string &str); // 文字列を書く
         void    InitPosition(const float x, const float y);
