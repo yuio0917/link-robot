@@ -40,8 +40,7 @@ void    LinkRobot::getAPos(){
     penUp();
     solveIK(pos4_x, pos4_y);
     penDown();
-    // //Position3からPosition4までの線形補完
-    // LinearInterpolation(pos3_x, pos3_y, pos4_x, pos4_y);
+
     //Position4からPosition5までの線形補完
     LinearInterpolation(pos4_x, pos4_y, pos5_x, pos5_y);
 }
@@ -224,7 +223,6 @@ void    LinkRobot::getCrossPos(){
     LinearInterpolation(x_left_top, y_left_top, x_right_bottom, y_right_bottom);
     penUp();
     solveIK(x_right_top, y_right_top);
-    delay(500);
     penDown();
     LinearInterpolation(x_right_top, y_right_top, x_left_bottom, y_left_bottom);
 }
