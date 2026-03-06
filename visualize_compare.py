@@ -15,7 +15,7 @@ CHAR_SPACING = 10.0
 CONFIGS = {
     "5chars_22mm_servo40_140": {
         "label": "A: 5文字 22mm servo40-140 (d=40, l1=135, l2=75, pe=55)",
-        "D": 40.0, "L1": 135.0, "L2": 75.0, "PEN_EXT": 55.0,
+        "D": 50.0, "L1": 85.0, "L2": 135.0, "PEN_EXT": 55.0,
         "SQUARE_SIZE": 22.0,
         "START_POS_X": 10.0, "START_POS_Y": 170.0,
         "text": "ABCDE",

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" font-family="sans-serif">
+  <rect width="900" height="420" fill="white"/>
+
+  <!-- ===== Step 1 (Left): Solve θ1 ===== -->
+  <text x="220" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Step 1: θ1 を求める</text>
+
+  <!-- Ground -->
+  <line x1="50" y1="350" x2="300" y2="350" stroke="#ccc" stroke-width="2"/>
+
+  <!-- Joint1 -->
+  <circle cx="100" cy="350" r="10" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="100" y="380" text-anchor="middle" font-size="13" fill="#E74C3C" font-weight="bold">Joint1 (0, 0)</text>
+
+  <!-- Joint3 -->
+  <circle cx="170" cy="160" r="8" fill="#2980B9" stroke="#1A5276" stroke-width="2"/>
+  <text x="145" y="150" text-anchor="end" font-size="13" fill="#2980B9" font-weight="bold">Joint3</text>
+
+  <!-- Pen tip -->
+  <circle cx="330" cy="95" r="8" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="345" y="90" font-size="13" fill="#E74C3C" font-weight="bold">Pen (x, y)</text>
+
+  <!-- Triangle fill -->
+  <polygon points="100,350 170,160 330,95" fill="#2980B9" opacity="0.08"/>
+
+  <!-- Side: l2 (Joint1 -> Joint3) -->
+  <line x1="100" y1="350" x2="170" y2="160" stroke="#2980B9" stroke-width="4" stroke-linecap="round"/>
+  <text x="110" y="255" font-size="16" fill="#2980B9" font-weight="bold" transform="rotate(-70, 110, 255)">l2</text>
+
+  <!-- Side: l4+l6 (Joint3 -> Pen) -->
+  <line x1="170" y1="160" x2="330" y2="95" stroke="#8E44AD" stroke-width="4" stroke-linecap="round"/>
+  <text x="245" y="112" text-anchor="middle" font-size="16" fill="#8E44AD" font-weight="bold">l4 + l6</text>
+
+  <!-- Side: d1 (Joint1 -> Pen) -->
+  <line x1="100" y1="350" x2="330" y2="95" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="8,4" stroke-linecap="round"/>
+  <text x="235" y="245" text-anchor="middle" font-size="15" fill="#E67E22" font-weight="bold" transform="rotate(-48, 235, 245)">d1 = √(x² + y²)</text>
+
+  <!-- θ1 angle at Joint1 -->
+  <path d="M 150,350 A 50,50 0 0,0 130,305" fill="none" stroke="#2980B9" stroke-width="2.5"/>
+  <text x="158" y="325" font-size="20" fill="#2980B9" font-weight="bold" font-style="italic">θ1</text>
+
+  <!-- Cosine law label -->
+  <text x="220" y="400" text-anchor="middle" font-size="14" fill="#555">余弦定理 → θ1 = acos(...) + atan2(y, x)</text>
+
+  <!-- ===== Divider ===== -->
+  <line x1="450" y1="20" x2="450" y2="410" stroke="#ddd" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="450" y="210" text-anchor="middle" font-size="28" fill="#aaa">→</text>
+
+  <!-- ===== Step 2 (Right): Solve θ2 ===== -->
+  <text x="670" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Step 2: θ2 を求める</text>
+
+  <!-- Ground -->
+  <line x1="500" y1="350" x2="750" y2="350" stroke="#ccc" stroke-width="2"/>
+
+  <!-- Joint2 -->
+  <circle cx="610" cy="350" r="10" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="610" y="380" text-anchor="middle" font-size="13" fill="#E74C3C" font-weight="bold">Joint2 (l1, 0)</text>
+
+  <!-- Joint4 -->
+  <circle cx="660" cy="175" r="8" fill="#27AE60" stroke="#1E8449" stroke-width="2"/>
+  <text x="685" y="175" font-size="13" fill="#27AE60" font-weight="bold">Joint4</text>
+
+  <!-- Joint5 -->
+  <circle cx="780" cy="110" r="8" fill="#555" stroke="#333" stroke-width="2"/>
+  <text x="800" y="108" font-size="13" fill="#555" font-weight="bold">Joint5</text>
+
+  <!-- Triangle fill -->
+  <polygon points="610,350 660,175 780,110" fill="#27AE60" opacity="0.08"/>
+
+  <!-- Side: l3 (Joint2 -> Joint4) -->
+  <line x1="610" y1="350" x2="660" y2="175" stroke="#27AE60" stroke-width="4" stroke-linecap="round"/>
+  <text x="615" y="260" font-size="16" fill="#27AE60" font-weight="bold" transform="rotate(-75, 615, 260)">l3</text>
+
+  <!-- Side: l5 (Joint4 -> Joint5) -->
+  <line x1="660" y1="175" x2="780" y2="110" stroke="#D35400" stroke-width="4" stroke-linecap="round"/>
+  <text x="715" y="128" text-anchor="middle" font-size="16" fill="#D35400" font-weight="bold">l5</text>
+
+  <!-- Side: d2 (Joint2 -> Joint5) -->
+  <line x1="610" y1="350" x2="780" y2="110" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="8,4" stroke-linecap="round"/>
+  <text x="715" y="250" text-anchor="middle" font-size="14" fill="#E67E22" font-weight="bold" transform="rotate(-55, 715, 250)">d2 (算出済み)</text>
+
+  <!-- θ2 angle at Joint2 -->
+  <path d="M 658,350 A 48,48 0 0,0 640,305" fill="none" stroke="#27AE60" stroke-width="2.5"/>
+  <text x="662" y="325" font-size="20" fill="#27AE60" font-weight="bold" font-style="italic">θ2</text>
+
+  <!-- Cosine law label -->
+  <text x="670" y="400" text-anchor="middle" font-size="14" fill="#555">余弦定理 → θ2 = atan2(...) - acos(...)</text>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 480" font-family="sans-serif">
+  <!-- Background -->
+  <rect width="500" height="480" fill="white"/>
+
+  <!-- Base line (ground) -->
+  <line x1="60" y1="380" x2="380" y2="380" stroke="#888" stroke-width="3"/>
+  <!-- Ground hatching -->
+  <g stroke="#888" stroke-width="1">
+    <line x1="60" y1="380" x2="45" y2="395"/>
+    <line x1="80" y1="380" x2="65" y2="395"/>
+    <line x1="100" y1="380" x2="85" y2="395"/>
+    <line x1="120" y1="380" x2="105" y2="395"/>
+    <line x1="140" y1="380" x2="125" y2="395"/>
+    <line x1="160" y1="380" x2="145" y2="395"/>
+    <line x1="180" y1="380" x2="165" y2="395"/>
+    <line x1="200" y1="380" x2="185" y2="395"/>
+    <line x1="220" y1="380" x2="205" y2="395"/>
+    <line x1="240" y1="380" x2="225" y2="395"/>
+    <line x1="260" y1="380" x2="245" y2="395"/>
+    <line x1="280" y1="380" x2="265" y2="395"/>
+    <line x1="300" y1="380" x2="285" y2="395"/>
+    <line x1="320" y1="380" x2="305" y2="395"/>
+    <line x1="340" y1="380" x2="325" y2="395"/>
+    <line x1="360" y1="380" x2="345" y2="395"/>
+    <line x1="380" y1="380" x2="365" y2="395"/>
+  </g>
+
+  <!-- l1 (base distance between motors) -->
+  <!-- Dimension line below -->
+  <line x1="120" y1="420" x2="310" y2="420" stroke="#333" stroke-width="1.5"/>
+  <line x1="120" y1="410" x2="120" y2="430" stroke="#333" stroke-width="1.5"/>
+  <line x1="310" y1="410" x2="310" y2="430" stroke="#333" stroke-width="1.5"/>
+  <text x="215" y="445" text-anchor="middle" font-size="18" fill="#333" font-weight="bold">l1 = 60mm</text>
+
+  <!-- Joint1 (Left Motor) -->
+  <circle cx="120" cy="380" r="12" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="120" y="472" text-anchor="middle" font-size="15" fill="#E74C3C" font-weight="bold">Motor1</text>
+
+  <!-- Joint2 (Right Motor) -->
+  <circle cx="310" cy="380" r="12" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+  <text x="310" y="472" text-anchor="middle" font-size="15" fill="#E74C3C" font-weight="bold">Motor2</text>
+
+  <!-- Left arm: l2 link (Joint1 -> Joint3) -->
+  <line x1="120" y1="380" x2="185" y2="175" stroke="#2980B9" stroke-width="5" stroke-linecap="round"/>
+  <!-- Joint3 (Left Elbow) -->
+  <circle cx="185" cy="175" r="8" fill="#2980B9" stroke="#1A5276" stroke-width="2"/>
+  <text x="120" y="270" text-anchor="middle" font-size="17" fill="#2980B9" font-weight="bold" transform="rotate(-72, 120, 270)">l2 = 135mm</text>
+  <text x="175" y="205" text-anchor="end" font-size="14" fill="#2980B9" font-weight="bold">Joint3</text>
+
+  <!-- Right arm: l3 link (Joint2 -> Joint4) -->
+  <line x1="310" y1="380" x2="365" y2="195" stroke="#27AE60" stroke-width="5" stroke-linecap="round"/>
+  <!-- Joint4 (Right Elbow) -->
+  <circle cx="365" cy="195" r="8" fill="#27AE60" stroke="#1E8449" stroke-width="2"/>
+  <text x="355" y="290" text-anchor="middle" font-size="17" fill="#27AE60" font-weight="bold" transform="rotate(-75, 355, 290)">l3 = 135mm</text>
+  <text x="385" y="215" font-size="14" fill="#27AE60" font-weight="bold">Joint4</text>
+
+  <!-- Left distal: l4 link (Joint3 -> Joint5) -->
+  <!-- Direction: Joint3(185,175) -> Joint5(310,105), vector (125,-70) -->
+  <line x1="185" y1="175" x2="310" y2="105" stroke="#8E44AD" stroke-width="5" stroke-linecap="round"/>
+  <text x="232" y="120" text-anchor="middle" font-size="17" fill="#8E44AD" font-weight="bold">l4 = 85mm</text>
+
+  <!-- Right distal: l5 link (Joint4 -> Joint5) -->
+  <line x1="365" y1="195" x2="310" y2="105" stroke="#D35400" stroke-width="5" stroke-linecap="round"/>
+  <text x="358" y="138" text-anchor="middle" font-size="17" fill="#D35400" font-weight="bold">l5 = 85mm</text>
+
+  <!-- Joint5 -->
+  <circle cx="310" cy="105" r="8" fill="#555" stroke="#333" stroke-width="2"/>
+  <text x="290" y="95" text-anchor="end" font-size="14" fill="#555" font-weight="bold">Joint5</text>
+
+  <!-- Pen extension: l6 (Joint5 -> Pen tip) — collinear with l4 -->
+  <!-- l4 direction: (125, -70), unit: (0.872, -0.489) -->
+  <!-- l6 visual extension: (0.872*43, -0.489*43) ≈ (37, -21) -->
+  <!-- Pen tip: (310+37, 105-21) = (347, 84) -->
+  <line x1="310" y1="105" x2="350" y2="82" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-dasharray="8,4"/>
+  <text x="348" y="107" font-size="17" fill="#333" font-weight="bold">l6 = 50mm</text>
+
+  <!-- Dashed guide line showing l4+l6 collinear -->
+  <line x1="185" y1="175" x2="350" y2="82" stroke="#8E44AD" stroke-width="1" stroke-dasharray="4,4" opacity="0.25"/>
+
+  <!-- Pen tip -->
+  <polygon points="350,82 343,62 357,62" fill="#333"/>
+  <circle cx="350" cy="59" r="5" fill="#E74C3C"/>
+  <text x="370" y="65" font-size="16" fill="#E74C3C" font-weight="bold">Pen (x, y)</text>
+
+  <!-- theta1 angle arc -->
+  <path d="M 168,380 A 48,48 0 0,0 150,338" fill="none" stroke="#2980B9" stroke-width="2.5"/>
+  <text x="175" y="355" font-size="20" fill="#2980B9" font-weight="bold" font-style="italic">θ1</text>
+
+  <!-- theta2 angle arc -->
+  <path d="M 358,380 A 48,48 0 0,0 340,338" fill="none" stroke="#27AE60" stroke-width="2.5"/>
+  <text x="360" y="355" font-size="20" fill="#27AE60" font-weight="bold" font-style="italic">θ2</text>
+</svg>
